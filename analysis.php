@@ -4,7 +4,7 @@
 		?>
 		<a class="analysislink" href="grafana.php">
 			<div>
-				Zur Grafana visualisierung
+				Zur Grafana Visualisierung
 			</div>
 		</a><br>
 		<a class="analysislink" href="rawdata.php">
