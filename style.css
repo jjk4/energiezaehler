@@ -1,0 +1,27 @@
+body{
+    font-family: Arial;
+}
+#logo{
+    width: 30%; 
+}
+.header {
+    color: white;
+    background: #393939;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+}
+.header a{
+    text-decoration: none;
+    color: white;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+#okay{
+    font-size: 15em;
+}
+#grafana{
+    width: 100%;
+    height: 73%;
+    border:none;
+}
