@@ -5,6 +5,9 @@
 
 	</head>
 	<body>
+		<?php
+			$config = include('config.php');
+		?>
 		<h1>Rohdaten</h1>
 		<form action="submitquery.php">
 			<label>Zähler:
