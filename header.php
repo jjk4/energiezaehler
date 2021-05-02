@@ -12,3 +12,6 @@
 			<a href="analysis.php">Auswertung</a>
 		</div>
 		<h2><?=$site_name?> - Energiezähler</h2>
+		<?php
+			$config = include('config.php');
+		?>
