@@ -5,6 +5,8 @@
 
 	</head>
 	<body>
+		<?php
+		?>
 		<h1>Auswertung</h1>
 		<a class="analysislink" href=".">
 			<div>
