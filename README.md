@@ -5,6 +5,6 @@ Ein einfaches Programm, um Daten von unterschiedlichsten Energiezählern (Stromz
 #### App:
 Siehe Releases: https://github.com/jjk4/energiezaehler/releases
 
-####Serversoftware:
+#### Serversoftware:
 
 Siehe Releases: https://github.com/jjk4/energiezaehler/releases
