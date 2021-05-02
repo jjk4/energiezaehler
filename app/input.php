@@ -5,6 +5,9 @@
 
 	</head>
 	<body>
+		<?php
+			$config = include('config.php');
+		?>
 		<h1>Dateneingabe</h1>
 		<form action="submitinput.php">
 			<label>Zähler:
