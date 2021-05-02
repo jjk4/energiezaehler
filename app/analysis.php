@@ -6,7 +6,15 @@
 	</head>
 	<body>
 		<h1>Auswertung</h1>
-		<?php
-		?>
+		<a class="analysislink" href=".">
+			<div>
+				Zur Grafana visualisierung
+			</div>
+		</a><br>
+		<a class="analysislink" href="rawdata.php">
+			<div>
+				Zu den Rohdaten
+			</div>
+		</a>
 	</body>
 </html>
