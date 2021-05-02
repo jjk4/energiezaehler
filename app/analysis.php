@@ -10,7 +10,7 @@
 		<h1>Auswertung</h1>
 		<a class="analysislink" href=".">
 			<div>
-				Zur Grafana visualisierung
+				Zur Grafana Visualisierung
 			</div>
 		</a><br>
 		<a class="analysislink" href="rawdata.php">
