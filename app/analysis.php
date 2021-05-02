@@ -1,13 +1,7 @@
-<html>
-	<head>
-		<title>Auswertung - Energiezählerapp</title>
-		<link rel="stylesheet" href="style.css">
-
-	</head>
-	<body>
-		<?php
+		<?php 
+			$site_name = "Auswertung";
+			include ("header.php"); 
 		?>
-		<h1>Auswertung</h1>
 		<a class="analysislink" href=".">
 			<div>
 				Zur Grafana Visualisierung
@@ -20,3 +14,4 @@
 		</a>
 	</body>
 </html>
+

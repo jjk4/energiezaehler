@@ -1,14 +1,7 @@
-<html>
-	<head>
-		<title>Auswertung - Energiezählerapp</title>
-		<link rel="stylesheet" href="style.css">
-
-	</head>
-	<body>
-		<?php
-			$config = include('config.php');
+		<?php 
+			$site_name = "Rohdaten";
+			include ("header.php"); 
 		?>
-		<h1>Rohdaten</h1>
 		<form action="submitquery.php">
 			<label>Zähler:
 				<select name="zaehler">
