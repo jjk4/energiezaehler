@@ -2,16 +2,14 @@
 			$site_name = "Dateneingabe";
 			include ("header.php"); 
 		?>
-		<form action="submit.php">
+		<form action="submitinput.php">
 			<label>Zähler:
 				<select name="zaehler">
-					<option value="pv_garage">PV Garage</option>
-					<option value="wasser">Wasser</option>
-					<option value="strom">Strom</option>
-					<option value="garten">Garten</option>
-					<option value="lueftung_heizraum">Lüftung Heizraum</option>
-					<option value="display_flur">Display Flur</option>
-					<option value="pv_haus">PV Haus</option>
+					<?php
+						foreach ($config['zaehler'] as $key => $value) {
+   							echo "<option value=" . $key . ">" . $value . "</option>", PHP_EOL;
+						};
+					?>
 				</select>
 			</label><br><br>
 			<label>Datum:
