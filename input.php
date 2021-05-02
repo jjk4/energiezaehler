@@ -1,14 +1,7 @@
-<html>
-	<head>
-		<title>Auswertung - Energiezählerapp</title>
-		<link rel="stylesheet" href="style.css">
-
-	</head>
-	<body>
-		<?php
-			$config = include('../config.php');
+		<?php 
+			$site_name = "Dateneingabe";
+			include ("header.php"); 
 		?>
-		<h1>Dateneingabe</h1>
 		<form action="submitinput.php">
 			<label>Zähler:
 				<select name="zaehler">
@@ -25,7 +18,7 @@
 					$datum = date("Y-m-d", $timestamp); 
 					echo("<input name=\"datum\" type=\"date\" value=$datum>\n"); 
 				?>
-			</label><br><br>
+			</label>
 			<label>Uhrzeit:
 				<?php 
 					$timestamp = time(); 
