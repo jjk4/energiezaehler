@@ -13,7 +13,7 @@
 		$datum = $_GET["datum"];
 		$wert = $_GET["wert"];
 		$zeit = $_GET["zeit"];
-		exec ("python3 /var/www/html/energie/main.py $zaehler $datum $zeit $wert", $output);
+		exec ("python3 ../main.py $zaehler $datum $zeit $wert", $output);
 		?>
 	</body>
 </html>
