@@ -6,5 +6,7 @@
 	</head>
 	<body>
 		<h1>Auswertung</h1>
+		<?php
+		?>
 	</body>
 </html>
