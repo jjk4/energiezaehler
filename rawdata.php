@@ -1,7 +1,14 @@
-		<?php 
-			$site_name = "Auswertung - Rohdaten";
-			include ("header.php"); 
+<html>
+	<head>
+		<title>Auswertung - Energiezählerapp</title>
+		<link rel="stylesheet" href="style.css">
+
+	</head>
+	<body>
+		<?php
+			$config = include('../config.php');
 		?>
+		<h1>Rohdaten</h1>
 		<form action="submitquery.php">
 			<label>Zähler:
 				<select name="zaehler">
@@ -18,7 +25,7 @@
 					$datum = date("Y-m-d", $timestamp) . "T" . date("H:i", $timestamp);
 					echo("<input name=\"startdatum\" type=\"datetime-local\" value=$datum>\n"); 
 				?>
-			</label>
+			</label><br><br>
 			<label>Bis: 
 				<?php 
 					$timestamp = time(); 
