@@ -17,7 +17,12 @@ results = client.query("SELECT * FROM " + database + " WHERE time > '" + timesta
 points = results.get_points
 point = 0
 for point in points():
-        print(point['time'])
-        print(" :   ")
-        print(point['value'])
-        print("<br>")
+	try:
+		print(point['time'])
+		print(" :   ")
+		print(point['value'])
+		print(" :  ")
+		print(point['add'])
+		print("<br>")
+	except:
+		print("ERROR")

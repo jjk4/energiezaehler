@@ -14,7 +14,8 @@ json_body = [
         {
                 "measurement": str(sys.argv[1]),
                 "fields": {
-                        "value": float(sys.argv[4])
+                        "value": float(sys.argv[4]),
+                        "add": "manual"
                 },
                 "time" : timestamp
         },
