@@ -6,9 +6,11 @@ from influxdb import InfluxDBClient
 client = InfluxDBClient(host='192.168.178.198', port=8086)
 client.switch_database('energietest')
 
+timezone = str(sys.argv[5])
+
 #command = "touch \"" + str(sys.argv) + "\""
 #os.system(command)
-timestamp = str(sys.argv[2]) + "T" + str(sys.argv[3]) + ":00Z"
+timestamp = str(sys.argv[2]) + "T" + str(sys.argv[3]) + ":00+0" + timezone + ":00"
 
 json_body = [
         {

@@ -13,6 +13,7 @@ client.switch_database('energietest')
 
 database = str(sys.argv[1])
 
+timezone = str(sys.argv[2])
 month = 1
 year = 2015
 
@@ -36,8 +37,8 @@ while (str(year) + "-" + str(month)) != (str(dt.year) + "-" + str(dt.month)):
 		nextmonthprint = "0" + str(nextmonth)
 	else:
 		nextmonthprint = str(nextmonth)
-	print("SELECT FIRST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00Z' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59Z'")
-	results = client.query("SELECT FIRST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00Z' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59Z'")
+	print("SELECT FIRST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00+0" + timezone + ":00' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59+0" + timezone + ":00'")
+	results = client.query("SELECT FIRST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00+0" + timezone + ":00' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59+0" + timezone + ":00'")
 	points = results.get_points
 	point = 0
 	for point in points():
@@ -46,8 +47,8 @@ while (str(year) + "-" + str(month)) != (str(dt.year) + "-" + str(dt.month)):
 		print(str(first))
 		#print(firstday)
 
-	print("SELECT LAST(value) FROM " + database + " WHERE time > '" + str(year) + "-" + monthprint + "-01T00:00:00Z' and time < '" + str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59Z'")
-	results = client.query("SELECT LAST(value) FROM " + database + " WHERE time > '" + str(year) + "-" + monthprint + "-01T00:00:00Z' and time < '" + str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59Z'")
+	print("SELECT LAST(value) FROM " + database + " WHERE time > '" + str(year) + "-" + monthprint + "-01T00:00:00+0" + timezone + ":00' and time < '" + str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59+0" + timezone + ":00'")
+	results = client.query("SELECT LAST(value) FROM " + database + " WHERE time > '" + str(year) + "-" + monthprint + "-01T00:00:00+0" + timezone + ":00' and time < '" + str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59+0" + timezone + ":00'")
 	points = results.get_points
 	point = 0
 	for point in points():
@@ -69,7 +70,7 @@ while (str(year) + "-" + str(month)) != (str(dt.year) + "-" + str(dt.month)):
 				        "value": energy,
 				        "add": "auto" 
 				},
-				"time" : "'" + str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59Z'"
+				"time" : "'" + str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59+0" + timezone + ":00'"
 			},
 		]
 		client.write_points(json_body)
@@ -80,7 +81,7 @@ while (str(year) + "-" + str(month)) != (str(dt.year) + "-" + str(dt.month)):
 				        "value": energy,
 				        "add": "auto"
 				},
-				"time" : "'" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00Z'"
+				"time" : "'" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00+0" + timezone + ":00'"
 			},
 		]
 		client.write_points(json_body)

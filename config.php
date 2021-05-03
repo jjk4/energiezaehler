@@ -9,6 +9,7 @@
 			'display_flur' => 'Display Flur',
 			'pv_haus' => 'PV Haus',
 		],
+		'timezone' => '2',
 		
 	];
 ?>

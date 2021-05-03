@@ -9,11 +9,13 @@
 		<div id=okay>&#9989;</div>
 		
 		<?php
+		$config = include('config.php');
+		$timezone = $config['timezone'];
 		$zaehler = $_GET["zaehler"];
 		$datum = $_GET["datum"];
 		$wert = $_GET["wert"];
 		$zeit = $_GET["zeit"];
-		exec ("python3 input.py $zaehler $datum $zeit $wert", $output);
+		exec ("python3 input.py $zaehler $datum $zeit $wert $timezone", $output);
 		?>
 	</body>
 </html>
