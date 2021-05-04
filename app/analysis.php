@@ -2,7 +2,7 @@
 			$site_name = "Auswertung";
 			include ("header.php"); 
 		?>
-		<a class="analysislink" href=".">
+		<a class="analysislink" href="http://solaranzeige.fritz.box:3000/d/zFMXA8Rgk/energiezahler?orgId=1&from=now-30d&to=now&kiosk=tv">
 			<div>
 				Zur Visualisierung
 			</div>
