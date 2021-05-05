@@ -2,6 +2,7 @@
 	<head>
 		<title><?=$site_name?> - Energiezähler</title>
 		<link rel="stylesheet" href="style.css">
+		<link rel="icon" href="favicon.ico" />
 
 	</head>
 	<body>

@@ -12,9 +12,9 @@
 				Zu den Rohdaten
 			</div>
 		</a><br>
-		<a class="analysislink" href="comparison.php">
+		<a class="analysislink" href="visu">
 			<div>
-				Zum Vergleich
+				Zur Visualisierung
 			</div>
 		</a><br>
 	</body>
