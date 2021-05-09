@@ -9,7 +9,7 @@ $arr = json_decode($output, true);
 <a href="index.php">Zurück</a>
 <div id="chart" style="width: 100%; height: 100%;">
 </div>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="apexcharts"></script>
 <script>
 	var options = {
 	  series: [ {
