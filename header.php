@@ -6,7 +6,7 @@
 
 	</head>
 	<body>
-		<a href=index.php><img src="logobig.png" id="logo"></a>
+		<a href="index.php"><img src="logobig.png" id="logo"></a>
 		<div class="header">
 			<a href="index.php">Start</a>
 			<a href="input.php">Dateneingabe</a>
