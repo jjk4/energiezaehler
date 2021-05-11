@@ -1,11 +1,13 @@
 <?php
+$config = include('../config.php');
+$database = $config['database'];
 $year1 = $_GET["year1"];
 $year2 = $_GET["year2"];
 $year3 = $_GET["year3"];
-$database = $_GET["database"];
-$command1 = escapeshellcmd('python3 3months.py ' . $year1 . " " . $database);
-$command2 = escapeshellcmd('python3 3months.py ' . $year2 . " " . $database);
-$command3 = escapeshellcmd('python3 3months.py ' . $year3 . " " . $database);
+$zaehler = $_GET["database"];
+$command1 = escapeshellcmd('python3 3months.py ' . " " . $database . " " . $year1 . " " . $zaehler);
+$command2 = escapeshellcmd('python3 3months.py ' . " " . $database . " " . $year2 . " " . $zaehler);
+$command3 = escapeshellcmd('python3 3months.py ' . " " . $database . " " . $year3 . " " . $zaehler);
 //echo($command1);
 $output1 = shell_exec($command1);
 $output2 = shell_exec($command2);
@@ -13,7 +15,8 @@ $output3 = shell_exec($command3);
 $arr1 = json_decode($output1, true);
 $arr2 = json_decode($output2, true);
 $arr3 = json_decode($output3, true);
-//echo($output)
+
+//echo($output1);
 
 ?>
 <a href="index.php">Zurück</a>
@@ -55,7 +58,7 @@ $arr3 = json_decode($output3, true);
 	},
 	yaxis: {
 	  title: {
-	    text: 'kWh'
+	    text: '<?php echo($config['zaehler'][$zaehler]['unit']);?>'
 	  }
 	},
 	fill: {
@@ -64,7 +67,7 @@ $arr3 = json_decode($output3, true);
 	tooltip: {
 	  y: {
 	    formatter: function (val) {
-	      return val
+	      return val + " <?php echo($config['zaehler'][$zaehler]['unit']);?>"
 	    }
 	  }
 	}

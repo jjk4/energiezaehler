@@ -11,11 +11,12 @@
 		<?php
 		$config = include('config.php');
 		$timezone = $config['timezone'];
+		$database = $config['database'];
 		$zaehler = $_GET["zaehler"];
 		$datum = $_GET["datum"];
 		$wert = $_GET["wert"];
 		$zeit = $_GET["zeit"];
-		exec ("python3 input.py $zaehler $datum $zeit $wert $timezone", $output);
+		exec ("python3 input.py $database $zaehler $datum $zeit $wert $timezone", $output);
 		?>
 	</body>
 </html>

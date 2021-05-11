@@ -7,13 +7,13 @@ from influxdb import InfluxDBClient
 #os.system(command)
 
 client = InfluxDBClient(host='192.168.178.198', port=8086)
-client.switch_database('energietest')
+client.switch_database(str(sys.argv[1]))
 
-timestamp1 = str(sys.argv[1])
-timestamp2 = str(sys.argv[2])
-database = str(sys.argv[3])
+timestamp1 = str(sys.argv[2])
+timestamp2 = str(sys.argv[3])
+zaehler = str(sys.argv[4])
 
-results = client.query("SELECT * FROM " + database + " WHERE time > '" + timestamp1 + "' and time < '" + timestamp2 + "'")
+results = client.query("SELECT * FROM " + zaehler + " WHERE time > '" + timestamp1 + "' and time < '" + timestamp2 + "'")
 points = results.get_points
 point = 0
 for point in points():

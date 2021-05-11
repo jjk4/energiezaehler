@@ -6,12 +6,12 @@ from influxdb import InfluxDBClient
 import datetime
 
 client = InfluxDBClient(host='192.168.178.198', port=8086)
-client.switch_database('energietest')
+client.switch_database(str(sys.argv[1]))
 
 dt = datetime.datetime.today()
 maxdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-database = str(sys.argv[2])
-year = sys.argv[1]
+database = str(sys.argv[3])
+year = sys.argv[2]
 month = 1
 timezone = "2"
 all_values = []
@@ -37,7 +37,7 @@ while month < 13:
 	for point in points():
 		last = (point['last'])
 	
-	energy = last-first
+	energy = round(last-first, 2)
 	all_values.append(energy)
 	month +=1
 print(json.dumps([all_values, ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']]))

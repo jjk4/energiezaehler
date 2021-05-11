@@ -34,7 +34,7 @@
 				<select name="database">
 					<?php
 						foreach ($config['zaehler'] as $key => $value) {
-   							echo "<option value=" . $key . ">" . $value . "</option>", PHP_EOL;
+   							echo "<option value=" . $key . ">" . $value['displayname'] . "</option>", PHP_EOL;
 						};
 					?>
 				</select>

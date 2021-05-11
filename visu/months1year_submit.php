@@ -1,5 +1,8 @@
 <?php
-$command = escapeshellcmd('python3 months1year.py ' . $_GET["year"] . " " . $_GET["database"]);
+$config = include('../config.php');
+$database = $config['database'];
+$zaehler = $_GET["database"];
+$command = escapeshellcmd('python3 months1year.py ' . $database . " " . $_GET["year"] . " " . $zaehler);
 //echo($command);
 $output = shell_exec($command);
 $arr = json_decode($output, true);
@@ -39,7 +42,7 @@ $arr = json_decode($output, true);
 	},
 	yaxis: {
 	  title: {
-	    text: 'kWh'
+	    text: '<?php echo($config['zaehler'][$zaehler]['unit']);?>'
 	  }
 	},
 	fill: {
@@ -48,7 +51,7 @@ $arr = json_decode($output, true);
 	tooltip: {
 	  y: {
 	    formatter: function (val) {
-	      return val
+	      return val + " <?php echo($config['zaehler'][$zaehler]['unit']);?>"
 	    }
 	  }
 	}
