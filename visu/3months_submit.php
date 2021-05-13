@@ -1,5 +1,5 @@
 <?php
-$config = include('../config.php');
+$config = json_decode(file_get_contents('../config.json'), true);
 $database = $config['database'];
 $host = $config['host'];
 $port = $config['port'];

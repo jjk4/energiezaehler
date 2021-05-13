@@ -76,6 +76,13 @@ input[type=number] {
   border-radius: 5px;
   box-sizing: border-box;
 }
+input[type=text] {
+  padding: 8px 8px;
+  display: inline-block;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
 input[type=submit] {
   background-color: #4CAF50;
   color: white;

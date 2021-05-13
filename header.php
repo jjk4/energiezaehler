@@ -11,8 +11,9 @@
 			<a href="index.php">Start</a>
 			<a href="input.php">Dateneingabe</a>
 			<a href="analysis.php">Auswertung</a>
+			<a href="configuration.php">Einstellungen</a>
 		</div>
 		<h2><?=$site_name?> - Energiezähler</h2>
 		<?php
-			$config = include('config.php');
+			$config = json_decode(file_get_contents('config.json'), true);
 		?>

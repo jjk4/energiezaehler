@@ -9,5 +9,5 @@
 	<body>
 		<h2><?=$site_name?></h2>
 		<?php
-			$config = include('../config.php');
+			$config = json_decode(file_get_contents('../config.json'), true);
 		?>
