@@ -16,7 +16,7 @@ $arr1 = json_decode($output1, true);
 $arr2 = json_decode($output2, true);
 $arr3 = json_decode($output3, true);
 
-//echo($output1);
+//echo($command1);
 
 ?>
 <a href="index.php">Zurück</a>

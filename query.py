@@ -13,7 +13,7 @@ timestamp1 = str(sys.argv[2])
 timestamp2 = str(sys.argv[3])
 zaehler = str(sys.argv[4])
 
-results = client.query("SELECT * FROM " + zaehler + " WHERE time > '" + timestamp1 + "' and time < '" + timestamp2 + "'")
+results = client.query("SELECT * FROM " + zaehler + " WHERE time > '" + timestamp1 + "' and time < '" + timestamp2 + "' tz('Europe/Berlin')")
 points = results.get_points
 point = 0
 for point in points():

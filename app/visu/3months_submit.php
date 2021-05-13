@@ -1,6 +1,7 @@
 <?php
-$site_name = "3 Monate monatlicher Vergleich - Diagramme";
-include ("header.php"); 
+$site_name = "";
+include ("header.php");
+$config = include('../../config.php');
 $database = $config['database'];
 $year1 = $_GET["year1"];
 $year2 = $_GET["year2"];
@@ -17,7 +18,7 @@ $arr1 = json_decode($output1, true);
 $arr2 = json_decode($output2, true);
 $arr3 = json_decode($output3, true);
 
-//echo($output1);
+//echo($command1);
 
 ?>
 <a href="index.php">Zurück</a>

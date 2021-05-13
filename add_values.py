@@ -13,7 +13,6 @@ client.switch_database(str(sys.argv[1]))
 
 database = str(sys.argv[2])
 
-timezone = str(sys.argv[3])
 month = 1
 year = 2015
 
@@ -37,8 +36,8 @@ while (str(year) + "-" + str(month)) != (str(dt.year) + "-" + str(dt.month)):
 		nextmonthprint = "0" + str(nextmonth)
 	else:
 		nextmonthprint = str(nextmonth)
-	print("SELECT FIRST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00+0" + timezone + ":00' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59+0" + timezone + ":00'")
-	results = client.query("SELECT FIRST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00+0" + timezone + ":00' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59+0" + timezone + ":00'")
+	print("SELECT FIRST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00Z' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59Z' tz('Europe/Berlin')")
+	results = client.query("SELECT FIRST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00Z' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59Z' tz('Europe/Berlin')")
 	points = results.get_points
 	point = 0
 	for point in points():
@@ -47,8 +46,8 @@ while (str(year) + "-" + str(month)) != (str(dt.year) + "-" + str(dt.month)):
 		print(str(first))
 		#print(firstday)
 
-	print("SELECT LAST(value) FROM " + database + " WHERE time > '" + str(year) + "-" + monthprint + "-01T00:00:00+0" + timezone + ":00' and time < '" + str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59+0" + timezone + ":00'")
-	results = client.query("SELECT LAST(value) FROM " + database + " WHERE time > '" + str(year) + "-" + monthprint + "-01T00:00:00+0" + timezone + ":00' and time < '" + str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59+0" + timezone + ":00'")
+	print("SELECT LAST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00Z' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59Z' tz('Europe/Berlin')")
+	results = client.query("SELECT LAST(value) FROM " + database + " WHERE time > '" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00Z' and time < '" + str(nextyear) + "-" + nextmonthprint + "-" + str(maxdays[nextmonth-1]) + "T23:59:59Z' tz('Europe/Berlin')")
 	points = results.get_points
 	point = 0
 	for point in points():
@@ -63,6 +62,13 @@ while (str(year) + "-" + str(month)) != (str(dt.year) + "-" + str(dt.month)):
 		print(daydifference)
 		energy = round((((first-last)/daydifference)*lastdayuntillastday)+last, 2)
 		print(energy)
+		#Timestamp kovertieren in UTC
+		timestamp = str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59"
+		local = pytz.timezone("Europe/Berlin")
+		naive = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S")
+		local_dt = local.localize(naive, is_dst=None)
+		utc_dt = local_dt.astimezone(pytz.utc)
+		timestamp = utc_dt.strftime("%Y-%m-%dT%H:%M:%S")
 		json_body = [
 			{
 				"measurement": database,
@@ -70,10 +76,17 @@ while (str(year) + "-" + str(month)) != (str(dt.year) + "-" + str(dt.month)):
 				        "value": energy,
 				        "add": "auto" 
 				},
-				"time" : "'" + str(year) + "-" + monthprint + "-" + str(maxdays[month-1]) + "T23:59:59+0" + timezone + ":00'"
+				"time" : timestamp
 			},
 		]
 		client.write_points(json_body)
+		#Timestamp kovertieren in UTC
+		timestamp = str(nextyear) + "-" + nextmonthprint + "-01T00:00:00"
+		local = pytz.timezone("Europe/Berlin")
+		naive = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S")
+		local_dt = local.localize(naive, is_dst=None)
+		utc_dt = local_dt.astimezone(pytz.utc)
+		timestamp = utc_dt.strftime("%Y-%m-%dT%H:%M:%S")
 		json_body = [
 			{
 				"measurement": database,
@@ -81,7 +94,7 @@ while (str(year) + "-" + str(month)) != (str(dt.year) + "-" + str(dt.month)):
 				        "value": energy,
 				        "add": "auto"
 				},
-				"time" : "'" + str(nextyear) + "-" + nextmonthprint + "-01T00:00:00+0" + timezone + ":00'"
+				"time" : timestamp
 			},
 		]
 		client.write_points(json_body)

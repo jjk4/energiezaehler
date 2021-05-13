@@ -6,8 +6,7 @@ $command = escapeshellcmd('python3 months1year.py ' . $database . " " . $_GET["y
 //echo($command);
 $output = shell_exec($command);
 $arr = json_decode($output, true);
-//echo($output)
-
+//echo($command)
 ?>
 <a href="index.php">Zurück</a>
 <div id="chart" style="width: 100%; height: 100%;">

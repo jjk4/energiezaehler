@@ -1,13 +1,14 @@
-#usage: python3 energiesparkonto.py database zaehler file.csv 
+#usage: python3 energiesparkonto.py database file.csv zaehler
 import sys
 import time
 import os
 from influxdb import InfluxDBClient
+from datetime import datetime   
+import pytz
 
 client = InfluxDBClient(host='192.168.178.198', port=8086)
 client.switch_database(str(sys.argv[1]))
 
-timezone = str(3)
 file = open(str(sys.argv[2]))
 for i in file:
 	if i[0] != "Z": 
@@ -20,10 +21,16 @@ for i in file:
 		value = i[20:]
 		value = value[:-1]
 		value = value.replace(",", ".")
-		timestamp = (year + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second + "+0" + timezone + ":00")
+		timestamp = (year + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second)
+		#Zeit in UTC kovertieren:
+		local = pytz.timezone("Europe/Berlin")
+		naive = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S")
+		local_dt = local.localize(naive, is_dst=None)
+		utc_dt = local_dt.astimezone(pytz.utc)
+		timestamp = utc_dt.strftime("%Y-%m-%dT%H:%M:%S") + "Z"
 		json_body = [
 			{
-				"measurement": str(sys.argv[2]),
+				"measurement": str(sys.argv[3]),
 				"fields": {
 				        "value": float(value),
 				        "add": "energiesparkonto"
