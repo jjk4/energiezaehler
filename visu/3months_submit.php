@@ -1,13 +1,15 @@
 <?php
 $config = include('../config.php');
 $database = $config['database'];
+$host = $config['host'];
+$port = $config['port'];
 $year1 = $_GET["year1"];
 $year2 = $_GET["year2"];
 $year3 = $_GET["year3"];
 $zaehler = $_GET["database"];
-$command1 = escapeshellcmd('python3 3months.py ' . " " . $database . " " . $year1 . " " . $zaehler);
-$command2 = escapeshellcmd('python3 3months.py ' . " " . $database . " " . $year2 . " " . $zaehler);
-$command3 = escapeshellcmd('python3 3months.py ' . " " . $database . " " . $year3 . " " . $zaehler);
+$command1 = escapeshellcmd('python3 3months.py ' . " " . $host . " " . $port . " " . $database . " " . $year1 . " " . $zaehler);
+$command2 = escapeshellcmd('python3 3months.py ' . " " . $host . " " . $port . " " . $database . " " . $year2 . " " . $zaehler);
+$command3 = escapeshellcmd('python3 3months.py ' . " " . $host . " " . $port . " " . $database . " " . $year3 . " " . $zaehler);
 //echo($command1);
 $output1 = shell_exec($command1);
 $output2 = shell_exec($command2);

@@ -1,21 +1,4 @@
 <?php
-/*	return [
-		'zaehler' => [
-			'pv_garage' => 'PV Garage',
-			'wasser' => 'Wasser',
-			'strom' => 'Strom',
-			'garten' => 'Garten',
-			'lueftung_heizraum' => 'Lüftung Heizraum',
-			'display_flur' => 'Display Flur',
-			'pv_haus' => 'PV Haus',
-			'heizung' => 'Heizung',
-		],
-		'timezone' => '2',
-		
-	];*/
-?>
-
-<?php
 	return [
 		'zaehler' => [
 			'pv_garage' => [
@@ -51,8 +34,9 @@
 				'unit' => 'kWh',
 			],
 		],
-		'timezone' => '2',
 		'database' => 'energietest',
+		'host' => '192.168.178.198',
+		'port' => '8086',
 		
 	];
 ?>

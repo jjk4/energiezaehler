@@ -12,18 +12,11 @@
 					?>
 				</select>
 			</label><br><br>
-			<label>Datum:
+			<label>Zeit: 
 				<?php 
 					$timestamp = time(); 
-					$datum = date("Y-m-d", $timestamp); 
-					echo("<input name=\"datum\" type=\"date\" value=$datum>\n"); 
-				?>
-			</label><br><br>
-			<label>Uhrzeit:
-				<?php 
-					$timestamp = time(); 
-					$datum = date("H:i", $timestamp); 
-					echo("<input name=\"zeit\" type=\"time\" value=$datum>\n"); 
+					$datum = date("Y-m-d", $timestamp) . "T" . date("H:i", $timestamp);
+					echo("<input name=\"datum\" type=\"datetime-local\" value=$datum>\n"); 
 				?>
 			</label><br><br>
 			<label>Zählerstand:

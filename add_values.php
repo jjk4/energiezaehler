@@ -1,8 +1,9 @@
 <?php
 	$config = include('config.php');
-	$timezone = $config['timezone'];
+	$host = $config['host'];
+	$port = $config['port'];
 	$database = $config['database'];
 	foreach ($config['zaehler'] as $key => $value) {
-		exec ("python3 add_values.py $database $key");
+		exec ("python3 add_values.py $host $port $database $key");
 	};
 ?>
