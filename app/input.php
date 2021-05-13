@@ -4,7 +4,7 @@
 		?>
 		<div class="content" id="center">
 			<form action="submitinput.php">
-				<label>Zähler:
+				<label>Zähler:<br>
 					<select name="zaehler">
 						<?php
 							foreach ($config['zaehler'] as $key => $value) {
@@ -13,14 +13,14 @@
 						?>
 					</select>
 				</label><br><br>
-				<label>Zeit: 
+				<label>Zeit: <br>
 					<?php 
 						$timestamp = time(); 
 						$datum = date("Y-m-d", $timestamp) . "T" . date("H:i", $timestamp);
 						echo("<input name=\"datum\" type=\"datetime-local\" value=$datum>\n"); 
 					?>
 				</label><br><br>
-				<label>Zählerstand:
+				<label>Zählerstand:<br>
 					<input name="wert" type="number" step="0.1">
 				</label><br><br>
 				<input type="submit">

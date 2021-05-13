@@ -1,7 +1,15 @@
 		<?php 
 			$site_name = "Einstellungen";
 			include ("header.php"); 
+			$timestamp = time(); 
+			$datum = date("Y-m-d", $timestamp) . "_" . date("H:i", $timestamp);
+			exec("rm downloads/*");
+			exec("cp config.json downloads/config-" . $datum . ".json");
 		?>
+		<div style="text-align:right; float:right;">
+			<a href="<?php echo("downloads/config-" . $datum . ".json");?>" download><button type="button">Konfigurationsdatei herunterladen</button></a><br><br>
+			<button onclick="location.href='uploadconfig.php'" type="button">Konfigurationsdatei hochladen</button><br><br>
+		</div>
 		<div class="content">
 			<form action="submitconfiguration.php">
 				<h3>Datenbankeinstellungen</h3>
