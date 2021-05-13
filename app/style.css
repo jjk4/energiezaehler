@@ -4,6 +4,16 @@ body{
 #logo{
     width: 30%; 
 }
+#center{
+  text-align: center;
+}
+h2 {
+  text-align: center;
+}
+.content {
+  width: 100%;
+  margin: 0 auto;
+}
 .header {
     color: white;
     background: #393939;
@@ -26,14 +36,56 @@ body{
     border:none;
 }
 .analysislink div{
-    border : 0.4em solid #404b99;
-    border-radius: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 90%;
 
+}
+.analysislink div:hover {
+  background-color: #45a049;
 }
 .analysislink{
     color: black;
     text-decoration: none;
     text-align: center;
     font-size: 2em;
-    width: 100%;
+}
+select {
+  padding: 8px 8px;
+  display: inline-block;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+input[type=datetime-local] {
+  padding: 8px 8px;
+  display: inline-block;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+input[type=number] {
+  padding: 8px 8px;
+  display: inline-block;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
 }

@@ -2,10 +2,18 @@
 			$site_name = "Diagramme";
 			include ("header.php"); 
 		?>
-		Bitte Visualisierung auswählen:<br>
-		<div class="visu_selection">
-			<a href="months1year.php">1 Jahr, alle Monate</a>
+		<div class="content" id="center">
+			Bitte Visualisierung auswählen:<br>
+			<a class="analysislink" href="months1year.php">
+				<div>
+					1 Jahr, alle Monate
+				</div>
+			</a>
+			<a class="analysislink" href="3months.php">
+				<div>
+					3 Jahre, monatlicher Vergleich
+				</div>
+			</a>
 		</div>
-		<div class="visu_selection">
-			<a href="3months.php">3 Jahre, monatlicher Vergleich</a>
-		</div>
+	</body>
+</html>
