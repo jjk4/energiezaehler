@@ -6,7 +6,7 @@
 			$new_configuration['port'] = $_GET["port"];
 			$new_configuration['database'] = $_GET["database"];
 			foreach ($config['zaehler'] as $key => $value) {
-				$new_configuration["zaehler"][$key] = array('displayname' => $_GET[$key . "_displayname"], 'unit' => $_GET[$key . "_unit"]);
+				$new_configuration["zaehler"][$key] = array('displayname' => $_GET[$key . "_displayname"], 'unit' => $_GET[$key . "_unit"], 'type' => $_GET[$key . "_type"]);
 				if ($_GET[$key . "_delete"] == "on")
 					unset($new_configuration["zaehler"][$key]);
 			};
