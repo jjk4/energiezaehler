@@ -39,6 +39,8 @@ then
 	read -p "$(echo -e "${BLUE}Erstelle auf dem Server eine Datenbank und gib den Namen der Datenbank ein ${NC}")" database
 	
 else
+	host="localhost"
+	port="8086"
 	databasetype="lokal"
 	read -p "$(echo -e "${BLUE}Wie soll die Datenbank heißen? (Standard: energie)${NC}")" database
 	if [ -z $database ]
@@ -48,7 +50,7 @@ else
 fi
 #Installation starten
 echo -e "${GREEN}Installiere Abhängigkeiten...${NC}"
-apt-get install git
+apt-get install git sudo python3-pip
 echo -e "${GREEN}Installiere Webserver...${NC}"
 apt-get install apache2 php -y
 echo -e "${GREEN}Lade Energiezähler herunter...${NC}"
@@ -62,10 +64,5 @@ then
 	apt-get install influxdb
 fi
 echo -e "${GREEN}Richte Datenbank ein...${NC}"
-if [ $installation == 'lokal' ]
-then
-	influx -execute "CREATE DATABASE $database;"
-	sudo -u www-data php /var/www/html$installationpath/installation.php localhost 8086 $database
-else
-	sudo -u www-data php /var/www/html$installationpath/installation.php $host $port $database
-fi
+sudo -u www-data php /var/www/html$installationpath/installation.php $host $port $database
+
