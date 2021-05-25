@@ -58,11 +58,12 @@ git clone https://github.com/jjk4/energiezaehler.git /var/www/html$installationp
 echo -e "${GREEN}Richte Energiezähler ein...${NC}"
 chown -R www-data:www-data /var/www/html$installationpath
 chmod 775 -R /var/www/html$installationpath
-if [ $installation == 'lokal' ]
+if [ $installation != 'entfernt' ]
 then 
 	echo -e "${GREEN}Installiere Datenbank...${NC}"
 	apt-get install influxdb
 fi
 echo -e "${GREEN}Richte Datenbank ein...${NC}"
-sudo -u www-data php /var/www/html$installationpath/installation.php $host $port $database
+cd /var/www/html$installationpath/
+sudo -u www-data php installation.php $host $port $database
 
