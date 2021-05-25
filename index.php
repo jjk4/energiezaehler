@@ -3,7 +3,7 @@
 			include ("header.php"); 
 		?>
 		<div class="content">
-		Version: 0.4
+		Version: 1.0
 		</div>
 	</body>
 </html>
