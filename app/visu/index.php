@@ -1,19 +1,27 @@
 		<?php 
-			$site_name = "Diagramme";
+			$site_name = "Visualisierung";
 			include ("header.php"); 
 		?>
 		<div class="content" id="center">
-			Bitte Visualisierung auswählen:<br>
-			<a class="analysislink" href="months1year.php">
-				<div>
-					1 Jahr, alle Monate
-				</div>
-			</a>
-			<a class="analysislink" href="3months.php">
-				<div>
-					3 Jahre, monatlicher Vergleich
-				</div>
-			</a>
+			Bitte Visualisierung auswählen:<br><hr>
+			<div class="visutype">
+				<b>Jahre im monatlichen Vergleich</b>
+				<form action="months.php">
+					<label>Anzahl der Jahre:
+						<input type="number" name="number">
+					</label><br>
+					<input type="submit">
+				</form>
+			</div><hr>
+			<div class="visutype">
+				<b>Jahre im Gesamtvergleich</b>
+				<form action="years.php">
+					<label>Anzahl der Jahre:
+						<input type="number" name="number">
+					</label><br>
+					<input type="submit">
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
