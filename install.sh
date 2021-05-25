@@ -54,7 +54,7 @@ apt-get install git sudo python3-pip
 echo -e "${GREEN}Installiere Webserver...${NC}"
 apt-get install apache2 php -y
 echo -e "${GREEN}Lade Energiezähler herunter...${NC}"
-git clone --branch stable https://github.com/jjk4/energiezaehler.git /var/www/html$installationpath
+git clone https://github.com/jjk4/energiezaehler.git /var/www/html$installationpath
 echo -e "${GREEN}Richte Energiezähler ein...${NC}"
 chown -R www-data:www-data /var/www/html$installationpath
 chmod 775 -R /var/www/html$installationpath
