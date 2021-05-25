@@ -32,6 +32,10 @@ then
 	installationpath="/energie"
 fi
 read -p "$(echo -e "${BLUE}Soll eine lokale oder entfernte Datenbank verwendet werden? [lokal/entfernt] (Standard: lokal) ${NC}")" databasetype
+if [ -z $datbasetype ]
+then
+	databasetype="lokal"
+fi
 if [ $databasetype == 'entfernt' ]
 then
 	read -p "$(echo -e "${BLUE}Gib die IP oder den Hostname des Servers der Datenbank ein ${NC}")" host
@@ -58,7 +62,7 @@ git clone https://github.com/jjk4/energiezaehler.git /var/www/html$installationp
 echo -e "${GREEN}Richte Energiezähler ein...${NC}"
 chown -R www-data:www-data /var/www/html$installationpath
 chmod 775 -R /var/www/html$installationpath
-if [ $dtabasetype != 'entfernt' ]
+if [ $databasetype != 'entfernt' ]
 then 
 	echo -e "${GREEN}Installiere Datenbank...${NC}"
 	apt-get install influxdb
