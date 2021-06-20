@@ -3,6 +3,8 @@ $config = json_decode(file_get_contents('../../config.json'), true);
 $database = $config['database'];
 $host = $config['host'];
 $port = $config['port'];
+$username = $config['username'];
+$password = $config['password'];
 $zaehler = $_GET["database"];
 ?>
 <a href="index.php">Zurück</a>
@@ -16,7 +18,7 @@ $zaehler = $_GET["database"];
 	  <?php
 		for ($i = 1; $i <= $_GET["number"]; $i++) {
 			$year = $_GET["year$i"];
-			$command = escapeshellcmd('python3 months.py ' . " " . $host . " " . $port . " " . $database . " " . $year . " " . $zaehler);
+			$command = escapeshellcmd('python3 months.py ' . " " . $host . " " . $port . " " . $database . " " . $username . " " . $password . " " . $year . " " . $zaehler);
 			$output = shell_exec($command);
 			$arr = json_decode($output, true);
 			echo "{

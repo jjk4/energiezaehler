@@ -72,6 +72,7 @@ if [ $databasetype != 'entfernt' ]
 then 
 	echo -e "${GREEN}Installiere Datenbank...${NC}"
 	apt-get install influxdb
+	influx -execute "CREATE DATABASE $database"
 fi
 echo -e "${GREEN}Richte Datenbank ein...${NC}"
 cd /var/www/html$installationpath/

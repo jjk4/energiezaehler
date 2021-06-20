@@ -22,6 +22,12 @@
 				<label>Datenbank
 					<input name="database" type="text" placeholder="Datenbank" value="<?php echo($config['database']);?>">
 				</label><br><br>
+				<label>Benutzername
+					<input name="username" type="text" placeholder="Benutzername" value="<?php echo($config['username']);?>">
+				</label><br><br>
+				<label>Passwort
+					<input name="password" type="password" placeholder="Passwort" value="<?php echo($config['password']);?>">
+				</label><br><br>
 				<h3>Energiezählereinstellungen</h3>
 				<label>Installationspfad
 					<input name="installationpath" type="text" placeholder="Installationspfad" value="<?php echo($config['installationpath']);?>">

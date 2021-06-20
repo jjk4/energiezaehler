@@ -1,10 +1,18 @@
 		<?php 
-			$crontab = fopen("/etc/cron.d/energiezaehler", "w" );
+			$crontab = fopen("zaehler_auslesen.sh", "w" );
 			$site_name = "Einstellungen";
 			include ("header.php"); 
 			$new_configuration = [];
 			$new_configuration['host'] = $_GET["host"];
 			$new_configuration['port'] = $_GET["port"];
+			$new_configuration['username'] = $_GET["username"];
+			$new_configuration['password'] = $_GET["password"];
+			if (empty($new_configuration['username'])) {
+				$new_configuration['username'] = "None";
+			}
+			if (empty($new_configuration['password'])) {
+				$new_configuration['password'] = "None";
+			}
 			$new_configuration['database'] = $_GET["database"];
 			$new_configuration['installationpath'] = $_GET["installationpath"];
 			foreach ($config['zaehler'] as $key => $value) {
@@ -26,12 +34,10 @@
 			//var_dump($new_configuration);
 			exec ("mv config.json config.json.old");
 			file_put_contents("config.json",json_encode($new_configuration));
-			#Crontab erstellen
-			fwrite( $crontab, "00  12  * * *   www-data      php " . $new_configuration["installationpath"] . "/add_values.php\n" ); #Zwischenberechnungen
 			#auszulesende Zähler:
 			foreach ($new_configuration['zaehler'] as $key => $value) {
 				if ($value["type"] == "sdm630") {
-					fwrite( $crontab, "*  00  * * *   www-data      python3 " . $new_configuration["installationpath"] . "/sdm630.py " . $new_configuration['host'] . " " .  $new_configuration['port'] . " " . $new_configuration['database'] . " " . $key . " " . $value['sdm630_counter'] . " " . $value['sdm630_usb'] . " " . $value['sdm630_id'] . "\n"); 
+					fwrite( $crontab, "python3 " . $new_configuration["installationpath"] . "/sdm630.py " . $new_configuration['host'] . " " .  $new_configuration['port'] . " " . $new_configuration['database'] . " " . $new_configuration['username'] . " " . $new_configuration['password'] . " " . $key . " " . $value['sdm630_counter'] . " " . $value['sdm630_usb'] . " " . $value['sdm630_id'] . "\n"); 
 				};
 
 			};
