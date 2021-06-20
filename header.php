@@ -3,6 +3,7 @@
 		<title><?=$site_name?> - Energiezähler</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="icon" href="favicon.ico" />
+		<script src="jquery.js"></script>
 
 	</head>
 	<body>

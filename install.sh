@@ -55,6 +55,8 @@ fi
 #Installation starten
 echo -e "${GREEN}Installiere Abhängigkeiten...${NC}"
 apt-get install git sudo python3-pip
+pip3 install minimalmodbus
+pip3 install influxdb
 echo -e "${GREEN}Installiere Webserver...${NC}"
 apt-get install apache2 php -y
 echo -e "${GREEN}Lade Energiezähler herunter...${NC}"
@@ -62,6 +64,10 @@ git clone https://github.com/jjk4/energiezaehler.git /var/www/html$installationp
 echo -e "${GREEN}Richte Energiezähler ein...${NC}"
 chown -R www-data:www-data /var/www/html$installationpath
 chmod 775 -R /var/www/html$installationpath
+touch /etc/cron.d/energiezaehler
+chown root:root /etc/cron.d/energiezaehler
+chmod 755 /etc/cron.d/energiezaehler
+usermod -a -G dialout www-data
 if [ $databasetype != 'entfernt' ]
 then 
 	echo -e "${GREEN}Installiere Datenbank...${NC}"
