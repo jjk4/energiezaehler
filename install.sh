@@ -71,7 +71,7 @@ usermod -a -G dialout www-data
 if [ $databasetype != 'entfernt' ]
 then 
 	echo -e "${GREEN}Installiere Datenbank...${NC}"
-	apt-get install influxdb
+	apt-get install influxdb influxdb-client
 	influx -execute "CREATE DATABASE $database"
 fi
 echo -e "${GREEN}Richte Datenbank ein...${NC}"
