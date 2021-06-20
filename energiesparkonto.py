@@ -1,4 +1,4 @@
-#usage: python3 energiesparkonto.py host port database file.csv zaehler
+#usage: python3 energiesparkonto.py host port database username password file.csv zaehler
 import sys
 import time
 import os
@@ -6,10 +6,10 @@ from influxdb import InfluxDBClient
 from datetime import datetime   
 import pytz
 
-client = InfluxDBClient(host=str(sys.argv[1]), port=int(sys.argv[2]))
+client = InfluxDBClient(host=str(sys.argv[1]), port=int(sys.argv[2]), username=str(sys.argv[4]), password=str(sys.argv[5]))
 client.switch_database(str(sys.argv[3]))
 
-file = open(str(sys.argv[4]))
+file = open(str(sys.argv[6]))
 for i in file:
 	if i[0] != "Z": 
 		day = i[0:2]
@@ -30,7 +30,7 @@ for i in file:
 		timestamp = utc_dt.strftime("%Y-%m-%dT%H:%M:%S") + "Z"
 		json_body = [
 			{
-				"measurement": str(sys.argv[5]),
+				"measurement": str(sys.argv[7]),
 				"fields": {
 				        "value": float(value),
 				        "add": "energiesparkonto"

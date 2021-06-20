@@ -1,5 +1,5 @@
 Python Skripte werden aufgerufen mit:
-python3 file.py host port datenbank zaehler
+python3 file.py host port datenbank benutzer passwort zaehler
 
 Haupt Datenbank in dev Datenbank kopieren:
 DROP DATABASE energietest

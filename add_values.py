@@ -8,10 +8,10 @@ dt = datetime.datetime.today()
 #command = "touch \"" + str(sys.argv) + "\""
 #os.system(command)
 maxdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-client = InfluxDBClient(host=str(sys.argv[1]), port=int(sys.argv[2]))
+client = InfluxDBClient(host=str(sys.argv[1]), port=int(sys.argv[2]), username=str(sys.argv[4]), password=str(sys.argv[5]))
 client.switch_database(str(sys.argv[3]))
 
-database = str(sys.argv[4])
+database = str(sys.argv[6])
 
 month = 1
 year = 2015

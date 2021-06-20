@@ -5,13 +5,13 @@ import os
 from influxdb import InfluxDBClient
 import datetime
 
-client = InfluxDBClient(host=str(sys.argv[1]), port=int(sys.argv[2]))
+client = InfluxDBClient(host=str(sys.argv[1]), port=int(sys.argv[2]), username=str(sys.argv[4]), password=str(sys.argv[5]))
 client.switch_database(str(sys.argv[3]))
 
 dt = datetime.datetime.today()
 maxdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-database = str(sys.argv[5])
-year = sys.argv[4]
+database = str(sys.argv[7])
+year = sys.argv[6]
 month = 1
 all_values = []
 

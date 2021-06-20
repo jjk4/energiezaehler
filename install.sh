@@ -55,6 +55,8 @@ fi
 #Installation starten
 echo -e "${GREEN}Installiere Abhängigkeiten...${NC}"
 apt-get install git sudo python3-pip
+pip3 install minimalmodbus
+pip3 install influxdb
 echo -e "${GREEN}Installiere Webserver...${NC}"
 apt-get install apache2 php -y
 echo -e "${GREEN}Lade Energiezähler herunter...${NC}"
@@ -62,14 +64,17 @@ git clone https://github.com/jjk4/energiezaehler.git /var/www/html$installationp
 echo -e "${GREEN}Richte Energiezähler ein...${NC}"
 chown -R www-data:www-data /var/www/html$installationpath
 chmod 775 -R /var/www/html$installationpath
+touch /etc/cron.d/energiezaehler
+chown root:root /etc/cron.d/energiezaehler
+chmod 755 /etc/cron.d/energiezaehler
+usermod -a -G dialout www-data
 if [ $databasetype != 'entfernt' ]
 then 
 	echo -e "${GREEN}Installiere Datenbank...${NC}"
-	apt-get install influxdb
+	apt-get install influxdb influxdb-client
+	influx -execute "CREATE DATABASE $database"
 fi
 echo -e "${GREEN}Richte Datenbank ein...${NC}"
 cd /var/www/html$installationpath/
-sudo -u www-data php installation.php $host $port $database
-echo -e "${GREEN}Bitte füge die nachfolgende Zeile noch in die Datei /etc/crontab ein${NC}"
-echo -e "${GREEN}00  12  * * *   pi      php /var/www/html$installationpath/add_values.php${NC}"
+sudo -u www-data php installation.php $host $port $database "/var/www/html$installationpath"
 echo -e "${GREEN}Das wars. Dein Energiezähler ist jetzt betriebsbereit. Schau dir doch vor der Nutzung noch das Wiki unter https://github.com/jjk4/energiezaehler/wiki an. Bei Problemen kannst du gerne einen Issue unter https://github.com/jjk4/energiezaehler/issues erstellen. Viel Spaß!${NC}"

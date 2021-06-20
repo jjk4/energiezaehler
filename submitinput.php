@@ -13,10 +13,12 @@
 		$database = $config['database'];
 		$host = $config['host'];
 		$port = $config['port'];
+		$username = $config['username'];
+		$password = $config['password'];
 		$zaehler = $_GET["zaehler"];
 		$datum = $_GET["datum"];
 		$wert = $_GET["wert"];
-		exec ("python3 input.py $host $port $database $zaehler $datum $wert", $output);
+		exec ("python3 input.py $host $port $database $username $password $zaehler $datum $wert", $output);
 		?>
 	</body>
 </html>
