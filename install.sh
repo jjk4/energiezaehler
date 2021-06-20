@@ -75,7 +75,5 @@ then
 fi
 echo -e "${GREEN}Richte Datenbank ein...${NC}"
 cd /var/www/html$installationpath/
-sudo -u www-data php installation.php $host $port $database
-echo -e "${GREEN}Bitte füge die nachfolgende Zeile noch in die Datei /etc/crontab ein${NC}"
-echo -e "${GREEN}00  12  * * *   pi      php /var/www/html$installationpath/add_values.php${NC}"
+sudo -u www-data php installation.php $host $port $database "/var/www/html$installationpath"
 echo -e "${GREEN}Das wars. Dein Energiezähler ist jetzt betriebsbereit. Schau dir doch vor der Nutzung noch das Wiki unter https://github.com/jjk4/energiezaehler/wiki an. Bei Problemen kannst du gerne einen Issue unter https://github.com/jjk4/energiezaehler/issues erstellen. Viel Spaß!${NC}"
