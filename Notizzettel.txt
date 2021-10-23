@@ -1,8 +1,0 @@
-Python Skripte werden aufgerufen mit:
-python3 file.py host port datenbank benutzer passwort zaehler
-
-Haupt Datenbank in dev Datenbank kopieren:
-DROP DATABASE energietest
-CREATE DATABASE energietest
-use energie
-SELECT * INTO energietest..:MEASUREMENT FROM /.*/ GROUP BY *
