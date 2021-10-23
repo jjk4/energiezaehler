@@ -1,2 +1,0 @@
-#Add these lines to /etc/crontab
-00  12  * * *   pi      php /var/www/html/energie/add_values.php
