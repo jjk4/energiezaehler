@@ -1,9 +1,6 @@
-		<?php 
-			$site_name = "Startseite";
-			include ("header.php"); 
-		?>
-		<div class="content">
-		Version: 1.0
-		</div>
-	</body>
-</html>
+<?php 
+	$site_name = "Startseite";
+	include ("header.php"); 
+?>
+Version: 2.0
+<?php include("footer.php");?>

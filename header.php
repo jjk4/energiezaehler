@@ -1,9 +1,19 @@
+<?php
+	$config = require("config.php");
+	$db = new mysqli($config["database"]["host"], $config["database"]["username"], $config["database"]["password"], $config["database"]["dbname"]);
+	if ($db->connect_error) {
+		die("Database Error: " . $db->connect_error);
+	}
+	
+
+?>
 <html>
 	<head>
 		<title><?=$site_name?> - Energiezähler</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="icon" href="favicon.ico" />
-		<script src="jquery.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://kit.fontawesome.com/f54f800e80.js" crossorigin="anonymous"></script>
 
 	</head>
 	<body>
@@ -15,6 +25,5 @@
 			<a href="configuration.php">Einstellungen</a>
 		</div>
 		<h2><?=$site_name?> - Energiezähler</h2>
-		<?php
-			$config = json_decode(file_get_contents('config.json'), true);
-		?>
+
+		<div class="content">
