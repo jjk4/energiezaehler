@@ -19,9 +19,11 @@
 		} else {
 			echo "<div id=okay>&#10060;</div>";
 		}
-		
-		
-		header("refresh:3;url=input.php");
+		if(isset($_GET["m"])){
+			header("refresh:3;url=input.php?m=" . strval(intval($_GET["m"])+1));
+		} else {
+			header("refresh:3;url=input.php?m=1");
+		}
 	} else {
 		?>
 <div id="center">
@@ -49,5 +51,14 @@
 		<input type="submit" class="button">
 	</form>
 </div>
+<?php if(isset($_GET["m"])){
+	?>
+	<script>
+		$("option:eq(<?php echo $_GET["m"];?>)").attr('selected','selected');
+	</script>
+<?php
+}
+?>
+
 
 <?php } include("footer.php");?>

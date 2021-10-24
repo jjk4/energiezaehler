@@ -136,3 +136,17 @@ i.fas.fa-check{
 #trashicon:hover{
   color: rgb(138, 16, 16);
 }
+
+.visunav {
+  color: white;
+  background: #5d645b;
+  margin: 0px;
+  padding: 10px;
+  text-align: center;
+}
+.visunav a{
+  text-decoration: none;
+  color: white;
+  margin-left: 1em;
+  margin-right: 1em;
+}

@@ -7,7 +7,7 @@
 			Zu den Rohdaten
 		</div>
 	</a>
-	<a class="analysislink" href="visu">
+	<a class="analysislink" href="visu.php">
 		<div>
 			Zur Visualisierung
 		</div>

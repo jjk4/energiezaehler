@@ -106,9 +106,21 @@
 						}
 					</script>
 					<form method="POST" autocomplete="off">
-						Technischer Name (nur Buchstaben): <input type="text" name="name" onchange="checkNameField(this.value)"> <span id="NamefieldCheck"></span><br>
-						Anzeigename: <input type="text" name="displayname" onchange="checkDisplayNameField(this.value)"> <span id="DisplayNamefieldCheck"></span><br>
-						Einheit: <input type="text" name="unit" onchange="checkUnitField(this.value)"> <span id="UnitfieldCheck"></span><br>
+						<table>
+							<tr>
+								<td>Technischer Name (nur Buchstaben):</td>
+								<td><input type="text" name="name" onchange="checkNameField(this.value)"> <span id="NamefieldCheck"></span></td>
+							</tr>
+							<tr>
+								<td>Anzeigename: </td>
+								<td><input type="text" name="displayname" onchange="checkDisplayNameField(this.value)"> <span id="DisplayNamefieldCheck"></span></td>
+							</tr>
+							<tr>
+								<td>Einheit: </td>
+								<td><input type="text" name="unit" onchange="checkUnitField(this.value)"> <span id="UnitfieldCheck"></span></td>
+							</tr>
+							
+						</table><br>
 						<input type="submit" id="submit" class="button" disabled>
 						<a class="button red" href="configuration.php">Abbrechen</a>
 					</form>
@@ -192,9 +204,21 @@
 					}
 				</script>
 				<form method="POST" autocomplete="off">
-					Technischer Name (nur Buchstaben): <input type="text" name="name" onchange="checkNameField(this.value)" value="<?php echo $row["name"];?>" disabled><span id="NamefieldCheck"><i class="fas fa-check"></i></span><br> 
-					Anzeigename: <input type="text" name="displayname" onchange="checkDisplayNameField(this.value)" value="<?php echo $row["displayname"];?>"> <span id="DisplayNamefieldCheck"></span><br>
-					Einheit: <input type="text" name="unit" onchange="checkUnitField(this.value)" value="<?php echo $row["unit"];?>"> <span id="UnitfieldCheck"></span><br>
+						<table>
+							<tr>
+								<td>Technischer Name (nur Buchstaben):</td>
+								<td><input type="text" name="name" onchange="checkNameField(this.value)" value="<?php echo $row["name"];?>" disabled><span id="NamefieldCheck"><i class="fas fa-check"></i></span></td>
+							</tr>
+							<tr>
+								<td>Anzeigename: </td>
+								<td><input type="text" name="displayname" onchange="checkDisplayNameField(this.value)" value="<?php echo $row["displayname"];?>"> <span id="DisplayNamefieldCheck"></span></td>
+							</tr>
+							<tr>
+								<td>Einheit: </td>
+								<td><input type="text" name="unit" onchange="checkUnitField(this.value)" value="<?php echo $row["unit"];?>"> <span id="UnitfieldCheck"></span></td>
+							</tr>
+							
+						</table><br>
 					<input type="submit" id="submit" class="button"> 
 					<a class="button red" href="configuration.php">Abbrechen</a>
 				</form>
