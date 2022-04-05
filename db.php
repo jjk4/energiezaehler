@@ -30,6 +30,16 @@
 
         return $zaehler;
     }
+    // FUnktion zum holen eines Zählers
+    function getZaehlerById($id) {
+        global $db;
+        $statement = $db->prepare("SELECT * FROM meters WHERE id = ?");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result();
+        $zaehler = $result->fetch_assoc();
+        return $zaehler;
+    }
 
     // FUnktion um größten Wert für bestimmten Zähler zu bekommen
     function getMax($zaehler) {

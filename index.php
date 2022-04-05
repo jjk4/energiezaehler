@@ -35,6 +35,71 @@
                         "zaehler" => getZaehler()
                     ));
             break;
+        case "settings":
+            // -------------------------------------------------- Einstellungen --------------------------------------------------
+            switch($_GET["s"]){
+                case "add":
+                    // Zähler hinzufügen
+                    if(isset($_POST["name"])){
+                        $statement = $db->prepare("INSERT INTO meters (name, unit) VALUES (?, ?)");
+                        $statement->bind_param("ss", $_POST["name"], $_POST["unit"]);
+                        $statement->execute();
+                        $messages["success"] .= "Zähler erfolgreich hinzugefügt!";
+                    }
+                    render("default", "meter_add", 
+                        array("title" => "Zähler hinzufügen", 
+                            "messages" => $messages,
+                        ));
+                    break;
+                case "delete": 
+                    // Bestätigung
+                    if(isset($_POST["id"])){
+                        $statement = $db->prepare("DELETE FROM meters WHERE id = ?");
+                        $statement->bind_param("i", $_POST["id"]);
+                        $statement->execute();
+                        $messages["success"] .= "Zähler erfolgreich gelöscht!";
+                        render("default", "backtosettings", 
+                            array("title" => "Zähler gelöscht", 
+                                "messages" => $messages,
+                            ));
+                    } else {
+                        render("default", "meter_delete", 
+                            array("title" => "Zähler löschen", 
+                                "messages" => $messages,
+                                "zaehler" => getZaehlerById($_GET["id"])
+                            ));
+                    }
+                    break;
+                case "edit":
+                    // Zähler bearbeiten
+                    if(isset($_POST["id"])){
+                        $statement = $db->prepare("UPDATE meters SET name = ?, unit = ? WHERE id = ?");
+                        $statement->bind_param("ssi", $_POST["name"], $_POST["unit"], $_POST["id"]);
+                        $statement->execute();
+                        $messages["success"] .= "Zähler erfolgreich bearbeitet!";
+                        render("default", "backtosettings", 
+                            array("title" => "Zähler bearbeitet", 
+                                "messages" => $messages,
+                            ));
+                    } else {
+                        render("default", "meter_edit", 
+                            array("title" => "Zähler bearbeiten", 
+                                "messages" => $messages,
+                                "zaehler" => getZaehlerById($_GET["id"])
+                            ));
+                    }
+                    break;
+
+                default:
+                    render("default", "settings", 
+                        array(  "title" => "Einstellungen", 
+                                "messages" => $messages,
+                                "zaehler" => getZaehler(true),
+                            ));
+                    break;
+            }
+            
+            break;
         default:
             render("default", "index", 
                 array(   "title" => "Startseite",
