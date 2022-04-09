@@ -100,6 +100,28 @@
             }
             
             break;
+        case "output_rawdata":
+            // -------------------------------------------------- Rohdaten anzeigen --------------------------------------------------
+            // Wenn Formular gesendet wurde, dann Daten aus DB holen
+            if(isset($_POST["id"])){
+                $daten = getZaehlerByTime($_POST["id"], $_POST["start"], $_POST["end"]);
+                $starttime = $_POST["start"];
+                $endtime = $_POST["end"];
+            } else {
+                $daten = null;
+                $starttime = $datetime;
+                $endtime = $datetime;
+            }
+            render("default", "output_rawdata", 
+                array(  "title" => "Rohdaten", 
+                        "messages" => $messages,
+                        "daten" => $daten,
+                        "starttime" => $starttime,
+                        "endtime" => $endtime,
+                        "zaehler" => getZaehler()
+                    ));
+            
+            break;
         default:
             render("default", "index", 
                 array(   "title" => "Startseite",

@@ -41,6 +41,17 @@
         return $zaehler;
     }
 
+    // Funktion zum holen con Zählerdaten nach Zeitspanne und ID
+    function getZaehlerByTime($id, $start, $end) {
+        global $db;
+        $statement = $db->prepare("SELECT * FROM data WHERE meter_id = ? AND time >= ? AND time <= ?");
+        $statement->bind_param("iss", $id, $start, $end);
+        $statement->execute();
+        foreach($statement->get_result()->fetch_all(MYSQLI_ASSOC) as $value){
+            $zaehler[] = $value;
+        }
+        return $zaehler;
+    }
     // FUnktion um größten Wert für bestimmten Zähler zu bekommen
     function getMax($zaehler) {
         global $db;
