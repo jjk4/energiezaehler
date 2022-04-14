@@ -21,3 +21,7 @@ body{
     max-width: 900px;
     margin: 0 auto;
 }
+.content-lg{
+    max-width: 1600px;
+    margin: 0 auto;
+}

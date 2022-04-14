@@ -63,4 +63,26 @@
         $max = $row['MAX(value)'];
         return $max;
     }
+    // Funktion um größten Wert für eine Zeispanne und Zähler zu bekommen
+    function getMaxByTime($zaehler, $start, $end) {
+        global $db;
+        $statement = $db->prepare("SELECT MAX(value) FROM data WHERE meter_id = ? AND time >= ? AND time <= ?");
+        $statement->bind_param("iss", $zaehler, $start, $end);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        $max = $row['MAX(value)'];
+        return $max;
+    }
+    // Funktion um kleinsten Wert für eine Zeispanne und Zähler zu bekommen
+    function getMinByTime($zaehler, $start, $end) {
+        global $db;
+        $statement = $db->prepare("SELECT MIN(value) FROM data WHERE meter_id = ? AND time >= ? AND time <= ?");
+        $statement->bind_param("iss", $zaehler, $start, $end);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+        $min = $row['MIN(value)'];
+        return $min;
+    }
 ?>
